@@ -1,0 +1,35 @@
+
+25665 = Positive count 
+
+
+25363 = Negative count
+
+
+127605 = Total unique words
+
+
+تقرير 
+
+أولا:تم طباعة أول اسطر من البيانات
+head Dataset.csv
+
+ثانيا:تم استخراج عدد التعليقات الايجابية
+بالاضافة إلى انشاء ملف جديد لوضع النتائج به
+grep -c positive Dataset.csv > analysis.txt 
+
+ثالثا:فتح الملف لتحقق من وجود الرقم و تعريفه
+nano analysis.txt 
+
+رابعا: استخراج عدد التعليقات السلبية 
+grep -c negative Dataset.csv >> analysis.txt 
+
+
+خامسا: عرض الملف
+cat analysis.txt 
+
+سادسا :
+ايجاد عدد الكلمات الفريدة في الملف دون اعتبار علامات الترقيم والارقام 
+cat Dataset.csv | tr -cs "[:alnum:]" "\n" |tr -d '[:digit:]' | sort | uniq  | wc -w >> analysis.txt
+
+سابعا : فتح الملف و كتابة الملخص
+nano analysis.txt 
